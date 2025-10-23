@@ -4,6 +4,20 @@ sysctl:
     vm.overcommit_memory: 1
 
 percona-valkey:
+  sentinel_conf: |
+    bind 0.0.0.0
+    port 26379
+    daemonize no
+    pidfile "/var/run/valkey/sentinel.pid"
+    logfile "/var/log/valkey/sentinel.log"
+    dir "/var/lib/valkey"
+    sentinel deny-scripts-reconfig yes
+    sentinel monitor mymaster 1.2.3.4 7379 2
+    sentinel down-after-milliseconds mymaster 5000
+    sentinel parallel-syncs mymaster 1
+    sentinel failover-timeout mymaster 180000
+
+percona-valkey:
   keep_existing_conf: True
   disable_thp: False
   manage_limits: False
