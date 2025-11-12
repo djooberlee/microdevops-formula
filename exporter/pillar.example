@@ -36,6 +36,13 @@ exporter:
       --collector.interrupts
 
 
+  openvpn:
+    type: openvpn
+    args:
+      -openvpn.status-files /var/log/openvpn-status.log
+      -openvpn.listen-address :9176
+
+
   bb_sites_1:
     type: blackbox
 
