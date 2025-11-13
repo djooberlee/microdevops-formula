@@ -4,7 +4,7 @@
 
 add_repository:
   pkgrepo.managed:
-    - ppa: {{ pillar['haproxy']["ppa"] | default('vbernat/haproxy-2.6') }}
+    - name: ppa:{{ pillar['haproxy']["ppa"] | default('vbernat/haproxy-2.6') }}
 
 haproxy_install:
   pkg.latest:
